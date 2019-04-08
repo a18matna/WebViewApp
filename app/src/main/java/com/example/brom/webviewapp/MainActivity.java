@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,17 +19,28 @@ public class MainActivity extends AppCompatActivity {
         /* This code is run when the App is created. Include code that creates your WebView */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       //först lägger vi till ett webview element
+
+
+        //först lägger vi till ett webview element
         WebView webView = new WebView(this);
 
         // vi gör
         setContentView(webView);
 
-        webView.loadUrl("https://scio.his.se/portal");
-
+        webView.loadUrl("http://wwwlab.iit.his.se/a18matna/Appdesign/Prototyp/prototyp1.html");
+       // webView.loadUrl("file:///android_asset/about.html");
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
+        webSettings.setSupportZoom(true);
+        webSettings.setDefaultTextEncodingName("utf-8");
 
     }
 
