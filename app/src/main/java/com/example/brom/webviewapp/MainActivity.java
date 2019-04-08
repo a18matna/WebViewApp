@@ -12,6 +12,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
+    private View.OnClickListener view;
+    private WebView webView;
     // Create a private member variable that can hold our WebView
 
     @Override
@@ -22,15 +24,33 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //fab
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            /*    Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show(); */
+                webView.loadUrl("http://wwwlab.iit.his.se/a18matna/Appdesign/Prototyp/prototyp1.html");
+            }
+        });
 
 
+       /* action_setting.setOnClickListenet(new View.OnClickListener(){
+        @Override
+        public void onClick(View veiw) {
+
+
+                                          }
+                                          });*/
         //först lägger vi till ett webview element
-        WebView webView = new WebView(this);
+        webView = findViewById(R.id.viewwindow);
+
 
         // vi gör
-        setContentView(webView);
+       //setContentView(webView);
 
-        webView.loadUrl("http://wwwlab.iit.his.se/a18matna/Appdesign/Prototyp/prototyp1.html");
+        //webView.loadUrl("http://wwwlab.iit.his.se/a18matna/Appdesign/Prototyp/prototyp1.html");
        // webView.loadUrl("file:///android_asset/about.html");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -60,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            webView.loadUrl("file:///android_asset/about.html");
             return true;
         }
 
